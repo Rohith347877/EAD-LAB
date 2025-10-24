@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chess Board</title>
+  <style>
+    body {
+      background: #2d3436;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+    }
+
+    .chess-container {
+      display: grid;
+      grid-template-columns: repeat(8, 60px);
+      grid-template-rows: repeat(8, 60px);
+      border: 4px solid #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .square {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .white {
+      background: #f1f2f6;
+    }
+
+    .black {
+      background: #2f3542;
+    }
+
+    .square:hover {
+      filter: brightness(1.2);
+    }
+
+    .label {
+      position: absolute;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .board-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .rank-label, .file-label {
+      position: absolute;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .rank-label {
+      left: -20px;
+    }
+
+    .file-label {
+      bottom: -20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="board-wrapper">
+    <div class="chess-container" id="chessBoard"></div>
+  </div>
+
+  <script>
+    const board = document.getElementById("chessBoard");
+    const pieces = {
+      white: ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"],
+      black: ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
+    };
+
+    // Create 8x8 chessboard
+    for (let row = 0; row < 8; row++) {
+      for (let col = 0; col < 8; col++) {
+        const square = document.createElement("div");
+        square.classList.add("square");
+
+        // alternate colors
+        if ((row + col) % 2 === 0) {
+          square.classList.add("white");
+        } else {
+          square.classList.add("black");
+        }
+
+        // Add chess pieces
+        if (row === 0) square.textContent = pieces.black[col];
+        if (row === 1) square.textContent = "♟";
+        if (row === 6) square.textContent = "♙";
+        if (row === 7) square.textContent = pieces.white[col];
+
+        board.appendChild(square);
+      }
+    }
+  </script>
+</body>
+</html>
