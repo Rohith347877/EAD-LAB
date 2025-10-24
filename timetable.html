@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Time Table</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #74b9ff, #a29bfe);
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      color: #2d3436;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 90%;
+      max-width: 900px;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border: 1px solid #dfe6e9;
+    }
+
+    th {
+      background: #0984e3;
+      color: white;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    tr:nth-child(even) {
+      background: #f1f2f6;
+    }
+
+    tr:hover {
+      background: #dfe6e9;
+      transition: 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      margin-top: 25px;
+      color: #fff;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Weekly Class Time Table</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>9:00 - 10:00</td>
+        <td>Math</td>
+        <td>Science</td>
+        <td>English</td>
+        <td>Computer</td>
+        <td>Physics</td>
+      </tr>
+      <tr>
+        <td>10:00 - 11:00</td>
+        <td>English</td>
+        <td>Math</td>
+        <td>Geography</td>
+        <td>History</td>
+        <td>Chemistry</td>
+      </tr>
+      <tr>
+        <td>11:00 - 12:00</td>
+        <td>Physics</td>
+        <td>Computer</td>
+        <td>Math</td>
+        <td>Biology</td>
+        <td>Sports</td>
+      </tr>
+      <tr>
+        <td>12:00 - 1:00</td>
+        <td colspan="5" style="background:#ffeaa7; font-weight:bold;">Lunch Break 🍴</td>
+      </tr>
+      <tr>
+        <td>1:00 - 2:00</td>
+        <td>Chemistry</td>
+        <td>English</td>
+        <td>Computer</td>
+        <td>Math</td>
+        <td>Biology</td>
+      </tr>
+      <tr>
+        <td>2:00 - 3:00</td>
+        <td>History</td>
+        <td>Geography</td>
+        <td>Science</td>
+        <td>Sports</td>
+        <td>Library</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer>© 2025 School Time Table | Designed by ChatGPT</footer>
+
+  <script>
+    // Optional JavaScript: Highlight current day column
+    const today = new Date().getDay(); // 0 = Sunday, 1 = Monday, ...
+    const columns = document.querySelectorAll("th, td:nth-child(" + (today + 1) + ")");
+    if (today >= 1 && today <= 5) { // highlight only Mon-Fri
+      columns.forEach(col => {
+        col.style.backgroundColor = "#81ecec";
+        col.style.fontWeight = "bold";
+      });
+    }
+  </script>
+</body>
+</html>
